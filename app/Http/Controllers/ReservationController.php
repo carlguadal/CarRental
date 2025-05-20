@@ -30,7 +30,7 @@ class ReservationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, $car_id)
+    public function store(Request $request, Car $car)
     {
         $request->validate([
             'full-name' => 'required|string|max:255',
@@ -39,7 +39,6 @@ class ReservationController extends Controller
             'drivers_license' => 'required|file|mimes:jpeg,png,jpg,pdf|max:10240',
         ]);
 
-        $car = Car::find($car_id);
         $user = Auth::user();
 
         // Check if the user has more than 2 reservations
@@ -73,7 +72,7 @@ class ReservationController extends Controller
         }
 
         // Check if car is available for these dates
-        $conflictingReservation = Reservation::where('car_id', $car_id)
+        $conflictingReservation = Reservation::where('car_id', $car->id)
             ->where(function($query) use ($start, $end) {
                 $query->whereBetween('start_date', [$start, $end])
                     ->orWhereBetween('end_date', [$start, $end])
@@ -127,7 +126,7 @@ class ReservationController extends Controller
      */
     public function show(Reservation $reservation)
     {
-        //
+        return view('reservation.show', compact('reservation'));
     }
 
     /**
@@ -213,5 +212,11 @@ class ReservationController extends Controller
             'available' => !$conflictingReservation,
             'message' => $conflictingReservation ? 'Car is not available for these dates' : 'Car is available for these dates'
         ]);
+    }
+
+    public function createById(Car $car)
+    {
+        $user = auth()->user();
+        return view('reservation.create', compact('car', 'user'));
     }
 }

@@ -48,6 +48,9 @@ Route::get('/terms_conditions', function () {
     return view('Terms_Conditions');
 })->name('terms_conditions');
 
+Route::get('/test-car/{car}', function(Car $car) {
+    return $car;
+});
 
 // -------------------------------------------------------------------------//
 
@@ -101,8 +104,8 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 // ------------------- client routes --------------------------------------- //
 
 Route::middleware(['auth', 'restrictAdminAccess'])->group(function () {
-    Route::get('/reservations/{car}', [ReservationController::class, 'create'])->name('car.reservation');
-    Route::post('/reservations/{car}', [ReservationController::class, 'store'])->name('car.reservationStore');
+    Route::get('/cars/{car}/reserve', [ReservationController::class, 'createById'])->name('car.reservation');
+    Route::post('/cars/{car}/reserve', [ReservationController::class, 'store'])->name('car.reservationStore');
     Route::get('/check-availability/{car}', [ReservationController::class, 'checkAvailability'])->name('car.checkAvailability');
     
     Route::get('/reservations', function () {
@@ -116,6 +119,8 @@ Route::middleware(['auth', 'restrictAdminAccess'])->group(function () {
             ->get();
         return view('clientReservations', compact('reservations', 'serviceReservations'));
     })->name('clientReservation');
+
+    Route::get('/reservations/{reservation}', [\App\Http\Controllers\ReservationController::class, 'show'])->name('reservations.show');
     
     Route::get('invoice/{reservation}', [invoiceController::class, 'invoice'])->name('invoice');
     

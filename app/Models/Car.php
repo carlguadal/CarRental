@@ -9,6 +9,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Car extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        'brand',
+        'model',
+        'engine',
+        'price_per_day',
+        'image',
+        'quantity',
+        'status',
+        'reduce',
+        'stars'
+    ];
+
     public function reservations()
     {
         return $this->hasMany(Reservation::class);

@@ -1,10 +1,5 @@
 @extends('layouts.myapp')
 @section('content')
-@if($car instanceof \Illuminate\Database\Eloquent\Collection)
-    <div class="alert alert-danger p-4 bg-red-100 text-red-800 rounded mb-4">
-        Error: This page requires a single car, but a collection was provided. Please go back and select a car to reserve.
-    </div>
-@else
 <div class="mx-auto max-w-screen-xl bg-white rounded-md p-6 m-8">
     <div class="flex justify-between md:flex-row flex-col">
         {{-- -------------------------------------------- left -------------------------------------------- --}}
@@ -299,5 +294,4 @@ document.addEventListener('DOMContentLoaded', function() {
     disableSubmitButtons();
 });
 </script>
-@endif
 @endsection

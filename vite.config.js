@@ -12,4 +12,23 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    css: {
+        postcss: {
+            plugins: [
+                require('tailwindcss'),
+                require('autoprefixer'),
+            ],
+        },
+    },
+    build: {
+        outDir: 'public/build',
+        assetsDir: '',
+        manifest: true,
+        rollupOptions: {
+            output: {
+                manualChunks: undefined
+            }
+        },
+        cssCodeSplit: false
+    }
 });

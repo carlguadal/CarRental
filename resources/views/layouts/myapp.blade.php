@@ -17,8 +17,11 @@
     {{-- Flowbite --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     @include('flatpickr::components.style')
-    @vite('resources/css/app.css')
-    @vite('resources/js/app.js')
+    
+    {{-- Mix Assets --}}
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <script src="{{ mix('js/app.js') }}" defer></script>
+    
     <style>
         html {
             scroll-behavior: smooth;

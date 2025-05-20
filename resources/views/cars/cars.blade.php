@@ -36,6 +36,7 @@
                     <div>
                         <h5 class=" font-bold text-xl tracking-tight text-slate-900">{{ $car->brand }} {{ $car->model }}
                             {{ $car->engine }}</h5>
+                        <div class="text-xs text-gray-500">Car ID: {{ $car->id }}</div>
                     </div>
                     <div class="mt-2 mb-5 flex items-center justify-between">
                         <p>

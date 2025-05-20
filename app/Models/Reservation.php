@@ -10,6 +10,20 @@ class Reservation extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'car_id',
+        'start_date',
+        'end_date',
+        'days',
+        'price_per_day',
+        'total_price',
+        'status',
+        'payment_method',
+        'payment_status',
+        'drivers_license'
+    ];
+
     protected $casts = [
         'start_date' => 'datetime',
         'end_date' => 'datetime',
