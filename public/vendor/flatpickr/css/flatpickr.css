@@ -1,0 +1,117 @@
+.flatpickr-calendar {
+      background: #fff;
+      opacity: 0;
+      display: none;
+      text-align: center;
+      visibility: hidden;
+      padding: 0;
+      animation: none;
+      direction: ltr;
+      border: 0;
+      font-size: 14px;
+      line-height: 24px;
+      border-radius: 5px;
+      position: absolute;
+      width: 307.875px;
+      box-sizing: border-box;
+      touch-action: manipulation;
+      box-shadow:
+        1px 0 0 #e6e6e6,
+        -1px 0 0 #e6e6e6,
+        0 1px 0 #e6e6e6,
+        0 -1px 0 #e6e6e6,
+        0 3px 13px rgba(0, 0, 0, 0.08);
+    }
+    
+    .flatpickr-calendar.open,
+    .flatpickr-calendar.inline {
+      opacity: 1;
+      max-height: 640px;
+      visibility: visible;
+    }
+    
+    .flatpickr-calendar.open {
+      display: inline-block;
+      z-index: 99999;
+    }
+    
+    .flatpickr-calendar.animate.open {
+      animation: fpFadeInDown 300ms cubic-bezier(.23, 1, .32, 1);
+    }
+    
+    .flatpickr-calendar.inline {
+      display: block;
+      position: relative;
+      top: 2px;
+    }
+    
+    .flatpickr-calendar.static {
+      position: absolute;
+      top: calc(100% + 2px);
+    }
+    
+    .flatpickr-calendar.static.open {
+      z-index: 999;
+      display: block;
+    }
+    
+    .flatpickr-calendar:before,
+    .flatpickr-calendar:after {
+      position: absolute;
+      display: block;
+      pointer-events: none;
+      border: solid transparent;
+      content: '';
+      height: 0;
+      width: 0;
+      left: 22px;
+    }
+    
+    .flatpickr-calendar:before {
+      border-width: 5px;
+      margin: 0 -5px;
+    }
+    
+    .flatpickr-calendar:after {
+      border-width: 4px;
+      margin: 0 -4px;
+    }
+    
+    .flatpickr-calendar.arrowTop:before {
+      bottom: 100%;
+      border-bottom-color: #e6e6e6;
+    }
+    
+    .flatpickr-calendar.arrowTop:after {
+      bottom: 100%;
+      border-bottom-color: #fff;
+    }
+    
+    .flatpickr-calendar.arrowBottom:before {
+      top: 100%;
+      border-top-color: #e6e6e6;
+    }
+    
+    .flatpickr-calendar.arrowBottom:after {
+      top: 100%;
+      border-top-color: #fff;
+    }
+    
+    .flatpickr-calendar.rightMost:before,
+    .flatpickr-calendar.arrowRight:before,
+    .flatpickr-calendar.rightMost:after,
+    .flatpickr-calendar.arrowRight:after {
+      left: auto;
+      right: 22px;
+    }
+    
+    .flatpickr-calendar.arrowCenter:before,
+    .flatpickr-calendar.arrowCenter:after {
+      left: 50%;
+      right: 50%;
+    }
+    
+    .flatpickr-calendar:focus {
+      outline: 0;
+    }
+    
